@@ -12,16 +12,6 @@ project(${PROJECT_DIR_NAME}
         LANGUAGES CXX)
 
 ### List of Files #############################################################
-
-set(INCLUDE
-        ${PROJECT_SOURCE_DIR}/include/action.h
-        include/approximation.h
-        include/constants.h
-        include/functions.h
-        include/state.h
-        include/mlinterp.h
-        )
-
 set(SRC
         ${PROJECT_SOURCE_DIR}/src/main.cpp
         )
@@ -77,7 +67,6 @@ endif(NOT WIN32)
 add_executable(${PROJECT_NAME} ${SRC})
 target_include_directories(${PROJECT_NAME}
                            PRIVATE ${PROJECT_SOURCE_DIR}/include)
-                           
 find_package(NLopt CONFIG REQUIRED)
 find_package(TBB CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE NLopt::nlopt PRIVATE TBB::tbb)

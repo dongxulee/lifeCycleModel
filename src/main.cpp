@@ -4,7 +4,8 @@
 #include "constants.h"
 using namespace std::chrono;
 
-
+// Function used to write the results to txt file 
+void saveSolution(vector<vector<vector<vector<vector<vector<double>>>>>>& data, string name);
 
 int main() {
     // define value functions and policy functions
@@ -57,7 +58,7 @@ int main() {
 
     auto start = high_resolution_clock::now();
     // Value iteration part
-    for(int t = T_max-1; t > T_min; t--){
+    for(int t = T_max-1; t > T_min-1; t--){
         cout << t << endl;
         for(int i=0; i < eSize; i++){
             for(int j=0; j < sSize; j++){
@@ -83,11 +84,48 @@ int main() {
     cout << "Time taken by function: "
          << duration.count() << "seconds" << endl;
 
+    saveSolution(Vgrid, "Vgrid");
+    saveSolution(cgrid, "cgrid");
+    saveSolution(bgrid, "bgrid");
+    saveSolution(kgrid, "kgrid");
+}
 
-    for(int w=0; w < w_grid_size; w++) {
-        for (int n = 0; n < n_grid_size; n++) {
-            cout << Vgrid[w][n][1][1][1][1] << "   ";
+
+
+
+
+
+
+
+
+
+
+
+
+void saveSolution(vector<vector<vector<vector<vector<vector<double>>>>>>& data, string name)
+{
+    ofstream outFile;
+    outFile.open("output/" + name + ".txt"); 
+    if (outFile.fail()){
+        cout << "Unable to open output file" << endl;
+        exit(1); 
+    }
+    else{
+        // cout information
+        for(int w = 0; w < w_grid_size; w++){
+            for(int n=0; n < n_grid_size; n++){
+                for(int e=0; e < eSize; e++){
+                    for(int s=0; s < sSize; s++){
+                        for(int a=0; a < aSize; a++){
+                            for(int t=T_min; t<T_max+1; t++){
+                                outFile << data[w][n][e][s][a][t] << "\n";
+                            }
+                        }
+                    }
+                }
+            }
         }
-        cout << endl;
+        cout << "Data stored in " + name + ".txt" << endl;
+        outFile.close();
     }
 }

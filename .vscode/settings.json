@@ -4,6 +4,7 @@
       "VCPKG_BUILD":"ON",
     },
     "files.associations": {
-      "chrono": "cpp"
+      "chrono": "cpp",
+      "iostream": "cpp"
     },
   }

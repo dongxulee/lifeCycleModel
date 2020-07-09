@@ -79,11 +79,11 @@ vector<double> powspace(double first, double last, int len) {
 }
 
 // wealth
-const int w_grid_size = 40;
+const int w_grid_size = 20;
 const double w_lower = 3;
 const double w_upper = 2000;
 // 401k amount
-const int n_grid_size = 20;
+const int n_grid_size = 10;
 const double n_lower = 3;
 const double n_upper = 1000;
 // discrete state size
