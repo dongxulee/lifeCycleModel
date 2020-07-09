@@ -1,0 +1,9 @@
+{
+    "cmake.configureSettings": {
+      "CMAKE_TOOLCHAIN_FILE": "/home/hfsluser/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "VCPKG_BUILD":"ON",
+    },
+    "files.associations": {
+      "chrono": "cpp"
+    },
+  }
