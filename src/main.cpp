@@ -2,6 +2,9 @@
 #include "state.h"
 #include "action.h"
 #include "constants.h"
+#include "tbb/tbb.h"
+ 
+using namespace tbb;
 using namespace std::chrono;
 
 // Function used to write the results to txt file 
@@ -63,7 +66,8 @@ int main() {
         for(int i=0; i < eSize; i++){
             for(int j=0; j < sSize; j++){
                 for(int k=0; k < aSize; k++){
-                    for(int w=0; w < w_grid_size; w++){
+                    parallel_for (0, w_grid_size, [&](int w){
+                    // for(int w=0; w < w_grid_size; w++){
                         for(int n=0; n < n_grid_size; n++){
                             double value;
                             Action a;
@@ -74,7 +78,7 @@ int main() {
                             bgrid[w][n][i][j][k][t] = a.b;
                             kgrid[w][n][i][j][k][t] = a.k;
                         }
-                    }
+                    });
                 }
             }
         }

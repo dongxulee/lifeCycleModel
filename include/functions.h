@@ -184,17 +184,16 @@ tuple<double, Action> V(const State& x, int t, const Prox &V_model){
         double ytx = y(t,x);
         // optimization part
         info data = {x,t,ytx,n_discount,V_model};
-        nlopt::opt opt(nlopt::LD_SLSQP, 2);
+        nlopt::opt opt(nlopt::LN_NELDERMEAD, 2);
         vector<double> lb = {0,0};
         vector<double> ub = {1,1};
         opt.set_lower_bounds(lb);
         opt.set_upper_bounds(ub);
         opt.set_max_objective(obj, &data);
-        opt.set_xtol_rel(1e-9);
-        vector<double> optX = {0.5,0.5};
+        opt.set_xtol_rel(1e-5);
+        vector<double> optX={0.5,0.5};
         double optF;
         opt.optimize(optX, optF);
-
         // Construct the return values
         double theta1 = optX[0];
         double theta2 = optX[1];
