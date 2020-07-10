@@ -63,6 +63,7 @@ int main() {
     // Value iteration part
     for(int t = T_max-1; t > T_min-1; t--){
         cout << t << endl;
+        Prox Vmodel(Vgrid);
         for(int i=0; i < eSize; i++){
             for(int j=0; j < sSize; j++){
                 for(int k=0; k < aSize; k++){
@@ -72,7 +73,7 @@ int main() {
                             double value;
                             Action a;
                             State x(w_grid[w],n_grid[n],i,j,k);
-                            tie(value, a) = V(x, t, Prox(Vgrid));
+                            tie(value, a) = V(x, t, Vmodel);
                             Vgrid[w][n][i][j][k][t] = value;
                             cgrid[w][n][i][j][k][t] = a.c;
                             bgrid[w][n][i][j][k][t] = a.b;

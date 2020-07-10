@@ -1,7 +1,7 @@
 [
 {
   "directory": "/home/hfsluser/lifeCycle/build",
-  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I../include -isystem /home/hfsluser/vcpkg/installed/x64-linux/include   -Wall -fexceptions -pedantic-errors -g -DDEBUG   -std=c++14 -o CMakeFiles/lifeCycle.dir/src/main.cpp.o -c /home/hfsluser/lifeCycle/src/main.cpp",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7   -I../include -isystem /home/hfsluser/vcpkg/installed/x64-linux/include   -Wall -fexceptions -pedantic-errors -pthread -g -DDEBUG   -std=c++14 -o CMakeFiles/lifeCycle.dir/src/main.cpp.o -c /home/hfsluser/lifeCycle/src/main.cpp",
   "file": "/home/hfsluser/lifeCycle/src/main.cpp"
 }
 ]
